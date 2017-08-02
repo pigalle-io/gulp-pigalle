@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.js"],"names":["heurk"],"mappings":"YAAO,SAASA,SACd,MAAO,wEAGAA,MAAAA","file":"index.js","sourcesContent":["export function heurk() {\n  return 'heurk!';\n}"],"sourceRoot":"../src"}

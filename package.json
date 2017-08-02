@@ -1,0 +1,51 @@
+{
+  "name": "gulp-pigalle-alpha",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/gulp-pigalle-alpha.dist.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "The Pigalle Framework team",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-beautifier": "^0.1.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-export-extensions": "^6.8.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-preset-stage-1": "^6.5.0",
+    "bunyan": "^1.8.5",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "es6-error": "^4.0.1",
+    "glob": "^7.1.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-header-license": "^1.0.9",
+    "gulp-load-plugins": "^1.4.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-rollup": "^2.14.0",
+    "gulp-sourcemaps": "^1.9.1",
+    "gulp-strip-comments": "^2.4.3",
+    "gulp-uglify": "^2.0.0",
+    "joi": "^10.1.0",
+    "mocha": "^3.2.0",
+    "mocha-pretty-bunyan-nyan": "^1.0.4",
+    "require-dir": "^0.3.0",
+    "rollup-plugin-uglify": "^1.0.1",
+    "rollup-stream": "^1.23.1",
+    "should": "^11.1.2",
+    "uglify-js": "^2.7.5",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "babelify": "^7.3.0",
+    "gulp-jsbeautifier": "^2.1.1",
+    "gulp-util": "^3.0.8"
+  }
+}
