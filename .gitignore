@@ -60,9 +60,6 @@ typings/
 # JetBrains WebStorm/IntelliJ
 .idea/
 
-# NPM package locked file
-package-lock.json
-
 # Gulp cache file
 .gulp-cache
 

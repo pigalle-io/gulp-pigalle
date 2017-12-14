@@ -1,1 +1,1 @@
-export * from './plugins/index';
+export * from './gulp-pigalle-builder';
