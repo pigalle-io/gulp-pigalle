@@ -1,12 +1,12 @@
 {
-  "name": "gulp-pigalle-alpha",
-  "version": "0.0.1",
+  "name": "gulp-pigalle",
+  "version": "0.1.0-alpha",
   "description": "",
-  "main": "dist/gulp-pigalle-alpha.dist.js",
+  "main": "dist/gulp-pigalle.dist.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm test"
   },
-  "author": "The Pigalle Framework team",
+  "author": "pigalle.io <team@pigalle.io>",
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.14.0",

@@ -30,7 +30,7 @@ const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
 const path = require('path');
 
-const dist = 'gulp-pigalle-alpha.dist.js';
+const dist = 'gulp-pigalle.dist.js';
 
 const paths = {
   es6: ['./src/index.js'],
@@ -47,7 +47,7 @@ gulp.task('compile', () => {
     .pipe(buffer())
     .pipe(g.sourcemaps.init({loadMaps: true}))
     .pipe(g.babel({
-      presets: ['es2015', 'stage-1'],
+      presets: ['env', 'stage-1'],
       plugins: ['transform-decorators-legacy', 'transform-export-extensions', 'add-module-exports',]
     }))
     //.pipe(g.uglify())
