@@ -13,6 +13,8 @@ Gulp tasks to build Pigalle libraries and applications more easily.
 
 ## Installation
 
+    npm install gulp-pigalle-builder --save-dev 
+
 ## Usage
 
 ## Contributing
