@@ -12,38 +12,72 @@ import path from 'path';
 
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
-import rollup from 'rollup-stream';
-import source from 'vinyl-source-stream';
-import buffer from 'vinyl-buffer';
+
+const rollup = require('rollup').rollup;
+const babel = require('rollup-plugin-babel');
 
 const g = gulpLoadPlugins({lazy: true});
 const PluginError = g.util.PluginError;
 const PLUGIN_NAME = 'gulp-pigalle';
 
 
-export function build(entryFilename = 'index.js', entryPath = './src', destination = './dist', outFilename='index.js') {
-  if (!entryFilename) {
+export function build(moduleName, input = 'src/index.js', output = 'index.js', destination = './dist', options = {}) {
+  if (!moduleName) {
+    throw new PluginError(PLUGIN_NAME, 'Missing module name');
+  }
+  if (!input) {
     throw new PluginError(PLUGIN_NAME, 'Missing entry file');
   }
-  const entry = path.join(entryPath, entryFilename);
+  if (!output) {
+    throw new PluginError(PLUGIN_NAME, 'Missing output file');
+  }
+  if (!destination) {
+    throw new PluginError(PLUGIN_NAME, 'Missing output destination directory');
+  }
 
-  const stream = rollup({
-    entry: entry,
-    sourceMap: true,})
-    .pipe(source(entryFilename, entryPath))
-    .pipe(buffer())
-    .pipe(g.sourcemaps.init({loadMaps: true}))
-    .pipe(g.babel({
-      presets: ['es2015', 'stage-1'],
-      plugins: ['transform-decorators-legacy', 'transform-export-extensions', 'add-module-exports',]
-    }))
-    .pipe(g.uglify())
-    .pipe(g.rename(outFilename))
-    .pipe(g.sourcemaps.write('.', {
-      sourceRoot: (file) => {
-        return path.relative(file.relative, path.join(file.cwd, 'src'));
-      }
-    }))
-    .pipe(gulp.dest(destination));
-  return stream;
+  if (!options.babel) {
+    options.babel = {
+      presets: [
+        ['env', {
+          'modules': false
+        }
+        ]
+      ],
+      plugins: [
+        'transform-decorators-legacy',
+        'transform-class-properties',
+        'add-module-exports',
+        'transform-object-rest-spread',
+      ],
+      babelrc: false,
+      exclude: 'node_modules/**'
+    }
+  }
+
+  if (!options.bundle) {
+    options.bundle = {};
+  }
+
+  if (!options.bundle.format) {
+    options.format = 'umd';
+  }
+
+  return rollup({
+    input: input,
+    sourcemap: true,
+    plugins: [
+      babel(options.babel)
+    ]
+  })
+    .then(bundle => {
+      return bundle.generate({
+        format: options.format,
+        moduleName: moduleName,
+      })
+    })
+    .then(gen => {
+      return g.file(output, gen.code, {src: true})
+        .pipe(gulp.dest(destination))
+    });
+
 }

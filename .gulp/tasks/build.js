@@ -16,16 +16,14 @@ const babel = require('rollup-plugin-babel');
 
 
 const paths = {
-  es6: ['./src/index.js'],
-  es5: './dist/',
+  input: './src/index.js',
+  dest: './dist/',
   output: 'gulp-pigalle-builder.dist.js',
-  // Must be absolute or relative to source map
-  sourceRoot: path.join(__dirname, './src'),
 };
 
 gulp.task('build', () => {
   return rollup({
-    input: paths.es6[0],
+    input: paths.input,
     sourcemap: true,
     plugins: [
       babel({
@@ -53,7 +51,7 @@ gulp.task('build', () => {
     })
     .then(gen => {
       return g.file(paths.output, gen.code, {src: true})
-        .pipe(gulp.dest(paths.es5))
+        .pipe(gulp.dest(paths.dest))
     })
 });
 
