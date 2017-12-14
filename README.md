@@ -1,7 +1,7 @@
-gulp-pigalle
-============
+gulp-pigalle-builder
+====================
 
-Gulp tasks to create Pigalle libraries and applications more easily.
+Gulp tasks to build Pigalle libraries and applications more easily.
 
 ## Table of Contents
 
