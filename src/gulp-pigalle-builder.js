@@ -68,16 +68,11 @@ export function build(moduleName, input = 'src/index.js', output = 'index.js', d
     plugins: [
       babel(options.babel)
     ]
-  })
-    .then(bundle => {
-      return bundle.generate({
-        format: options.format,
-        moduleName: moduleName,
-      })
+  }).then(bundle => {
+    return bundle.generate({
+      format: options.format,
+      moduleName: moduleName,
     })
-    .then(gen => {
-      return g.file(output, gen.code, {src: true})
-        .pipe(gulp.dest(destination))
-    });
+  });
 
 }
